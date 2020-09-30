@@ -55,7 +55,7 @@ void pop(){
 }
 
 void show(){
-    for(int i=top;i>0;i--){
+    for(int i=top;i>=0;i--){
         cout<<Stack[i]<<" ";
     }
     if(top==-1)
