@@ -81,29 +81,44 @@ NODE* create(){
 
 bool check(NODE *list1,NODE *list2){
     printf("Status : ");
-    NODE *temp1,*temp2,*check;
+    NODE *temp1,*temp2;
     temp1 = list1;
     temp2 = list2;
-    while(temp2 != NULL){
-        if(list1->data == temp2->data){
+    // while(temp2 != NULL){
+    //     if(list1->data == temp2->data){
+    //         temp1 = list1;
+    //         check = temp2;
+    //         while(temp1 != NULL){
+    //             temp1 = temp1->next;
+    //             check = check->next;
+    //              if(temp1->data != check->data){ 
+    //                 break;
+    //             }
+    //             if(temp1->next == NULL){
+    //                 return true;
+    //             }
+    //             if(check->next == NULL)
+    //                 return false;
+    //         }
+    //     }
+    //     temp2 = temp2->next;
+    // }
+    // return false;
+
+    while(temp1 != NULL && temp2 != NULL){
+        if(temp1->data == temp2->data){
+            temp1 = temp1->next;
+            temp2 = temp2->next;
+            if(temp1 == NULL)
+                return true;
+        }else{
             temp1 = list1;
-            check = temp2;
-            while(temp1 != NULL){
-                temp1 = temp1->next;
-                check = check->next;
-                 if(temp1->data != check->data){ 
-                    break;
-                }
-                if(temp1->next == NULL){
-                    return true;
-                }
-                if(check->next == NULL)
-                    return false;
-            }
+            if(temp1->data != temp2->data)
+                temp2 = temp2->next;
+            if(temp2 == NULL)
+                return false;
         }
-        temp2 = temp2->next;
     }
-    return false;
 }
 
 void traverse(NODE *list,char ch){
