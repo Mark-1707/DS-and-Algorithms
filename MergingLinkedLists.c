@@ -26,11 +26,18 @@ int main(){
     NODE *list2 = NULL;
     NODE *mergedList = NULL;
     char ch;
+
     list1 = create();
     list2 = create();
+
+    if(list1 == NULL && list2 == NULL){
+        printf("Merge Cant be Performed");
+        return 0;
+    }
     traverse(list1,'1');
     printf("\n");
     traverse(list2,'2');
+
     mergedList = merge(list1,list2); 
     printf("\n");
     traverse(mergedList,'3');
@@ -39,7 +46,7 @@ int main(){
 
 NODE* create(){
     printf("Enter Elements in Linked list (To exit press 0): ");
-    NODE *list;
+    NODE *list = NULL;
     start = NULL;
     int ele=1;
     NODE *temp = NULL;
@@ -67,12 +74,18 @@ NODE* create(){
 }
 
 NODE* merge(NODE *list1,NODE *list2){
-    printf("List Aftre Merging : ");
+    printf("\nList Aftre Merging : ");
     NODE *start = NULL;
     NODE *temp1 = list1;
     NODE *temp2 = list2;
     NODE *p,*q;
     start = temp1;
+    if(list1 == NULL && list2 != NULL){
+        temp1 = temp2;
+        return temp2;
+    }else if(list2 == NULL && list1 != NULL){
+        return temp1;
+    }else
     while(temp1->next != NULL && temp2->next != NULL){
         p = temp1->next;
         q = temp2->next;
@@ -88,6 +101,10 @@ NODE* merge(NODE *list1,NODE *list2){
 }
 
 void traverse(NODE *list,char ch){
+    if(list == NULL){
+        printf("List is Empty\n");
+        return;
+    }
     NODE *temp = list;
     printf("Linked List %c = ",ch);
     while(temp != NULL){
