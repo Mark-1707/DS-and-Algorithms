@@ -11,7 +11,7 @@ void BubbleSort(int arr[],int n){
     int i=0;
     while(i<n-1){
         int init = 0;
-        for(int j=init+1;j<n;j++){
+        for(int j=init+1;j<n-i;j++){
             if(arr[init]>arr[j])
                 swap(&arr[init],&arr[j]);
             init++;
@@ -37,4 +37,5 @@ int main(){
     printf("\nSorted Array : ");
     for(int i=0;i<n;i++)
         printf("%d ",arr[i]);
+    printf("\n");
 }

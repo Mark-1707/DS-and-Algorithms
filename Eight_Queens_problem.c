@@ -14,7 +14,9 @@ backtracking program to find a way through the maze.
 #include<string.h> 
 
 int board[8][8]; // you can pick any matrix size you want
-                 
+
+int count = 0;
+
 bool isPossible(int n,int row,int col){  // check whether 
                       // placing queen possible or not
 
@@ -38,7 +40,7 @@ bool isPossible(int n,int row,int col){  // check whether
       return false;
     }
   }
-
+  count++;
   return true;
 }
 void nQueenHelper(int n,int row){
@@ -53,7 +55,7 @@ void nQueenHelper(int n,int row){
       }
       printf("\n");
     }
-    printf("\n\n\n");
+    printf("\n");
     return;
 
   }
@@ -88,5 +90,6 @@ int main(){
     scanf("%d",&n); // could use a default 8 as well
     
     placeNQueens(n);
+    printf("\nBoard positions are investigated : %d \n",count);
     return 0;
 }
