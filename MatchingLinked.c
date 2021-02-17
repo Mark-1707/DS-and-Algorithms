@@ -33,7 +33,6 @@ int main(){
     NODE *list1 = NULL;
     NODE *list2 = NULL;
     bool status = true;
-    char ch;
     list1 = create();
     list2 = create();
     traverse(list1,'1');
